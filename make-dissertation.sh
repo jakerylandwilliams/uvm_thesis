@@ -7,8 +7,7 @@ done
 
 for bblfile in chapter*.bbl
 do
-	cat $bblfile | sed 's/thebibliography/references/' > tmp
-	mv tmp $bblfile
+        sed -i 's/thebibliography/references/' $bblfile
 done
 
 bibtex dissertation;
