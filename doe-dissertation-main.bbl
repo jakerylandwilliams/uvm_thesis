@@ -1,0 +1,30 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Auerbach and Bongard}{Auerbach and
+  Bongard}{2010}]{AuerbachBongard2010}
+Auerbach, J.~E. and J.~C. Bongard (2010).
+\newblock Evolving {CPPNs} to grow three-dimensional physical structures.
+\newblock In {\em Proceedings of the Genetic and Evolutionary Computation
+  Conference (GECCO-2010)}, New York, NY, pp.\  627--634. ACM.
+
+\bibitem[\protect\citeauthoryear{Bongard}{Bongard}{2009}]{Bongard2009}
+Bongard, J. (2009).
+\newblock Accelerating self-modeling in cooperative robot teams.
+\newblock {\em IEEE Transactions on Evolutionary Computation\/}~{\em 13\/}(2),
+  321--332.
+
+\bibitem[\protect\citeauthoryear{Bongard and Paul}{Bongard and
+  Paul}{2000}]{Bongard2000}
+Bongard, J.~C. and C.~Paul (2000).
+\newblock Investigating morphological symmetry and locomotive efficiency using
+  virtual embodied evolution.
+\newblock In {\em From Animals to Animats: The Sixth International Conference
+  on the Simulation of Adaptive Behaviour}, pp.\  420--429. MIT Press.
+
+\bibitem[\protect\citeauthoryear{Skalka and Smith}{Skalka and
+  Smith}{2004}]{skalka-smith-aplas04}
+Skalka, C. and S.~Smith (2004, November).
+\newblock History effects and verification.
+\newblock In {\em Asian Programming Languages Symposium}.
+
+\end{thebibliography}
