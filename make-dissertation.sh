@@ -1,6 +1,7 @@
 #!/bin/bash
 pdflatex dissertation;
 
+# set STYLE to JA for a journal article style thesis
 STYLE="Standard"
 
 if [ $STYLE -eq "JA" ]; then
