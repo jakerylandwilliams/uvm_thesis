@@ -96,9 +96,16 @@ the homies that didn't make it.
 %but, for things like the lit review (chapter 1) or an appendix, should use input so it does not get it's own references section
 
 %if not doing a journal format dissertation you can just use input for all chapters, or put text here directly.
-\input{chapter1}
-\include{chapter2}
-\include{chapter3}
+
+% Journal Article format:
+%\input{chapter1-JA}
+%\include{chapter2-JA}
+%\include{chapter3-JA}
+
+% Standard format:
+\input{chapter1-standard}
+\input{chapter2-standard}
+\input{chapter3-standard}
 
 \bibliographystyle{chicago}
 \bibliography{example}
@@ -106,3 +113,4 @@ the homies that didn't make it.
 \input{appendix}
 
 \end{document}
+
