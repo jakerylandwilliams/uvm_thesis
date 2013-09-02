@@ -40,11 +40,13 @@
 \def\doctorphilosophy{\gdef\@degreetype{Doctor of Philosophy}}
 
 \def\cs{\gdef\@spectype{Computer Science}}
+\def\apma{\gdef\@spectype{Applied Mathematics}}
 
 \def\octgrad{\gdef\@gradmonth{October}}
 \def\marchgrad{\gdef\@gradmonth{March}}
 \def\maygrad{\gdef\@gradmonth{May}}
-
+\def\jangrad{\gdef\@gradmonth{January}}
+\def\decgrad{\gdef\@gradmonth{December}}
 
 \renewcommand\maketitle{%
   \thispagestyle{empty}
@@ -56,7 +58,7 @@
     \doublespacing
     {\large
     \@thesistype\ Presented\\
-    \vskip 5em     
+    %%\vskip 5em     
     by\\
     \@author\\
     to\\
