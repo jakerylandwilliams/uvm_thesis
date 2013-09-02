@@ -15,7 +15,8 @@ done
 
 \rm $OLD_NAMEBASE*
 
-sed -i s/$OLD_NAMEBASE/$NEW_NAMEBASE/ $NEW_NAMEBASE-main.settings.tex
+sed -i .old s/$OLD_NAMEBASE/$NEW_NAMEBASE/ $NEW_NAMEBASE-main.settings.tex
 
-sed -i s/$OLD_NAMEBASE/$NEW_NAMEBASE/ make-dissertation.sh
+sed -i .old s/$OLD_NAMEBASE/$NEW_NAMEBASE/ make-dissertation.sh
 
+\rm *.old
