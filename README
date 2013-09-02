@@ -1,10 +1,13 @@
-I've made some minor changes from Josh's version.
+From Josh's version I've added some functionality through scripts, reorganized, and made the default more thesis-oriented.
+
+TLDR: run "./setup.sh my-dissertation", edit away, compile w "./make-dissertation.sh"
 
 Mainly, it's just more set up for making a standard style thesis (as opposed to a journal article thesis).
 Both functionalities are included in the dissertation.tex file, and both sets of tex files for the chapters are included.
 Running ./make-dissertation.sh makes either format, specified by the variable STYLE.
 
 I've also included a few files for catching common writing errors, as detailed in http://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/ and brought to our attention by Chris Danforth.
+These run by default in make-dissertation.sh and their usage is otherwise documented in bin.
 
 Cheers,
 Andy
