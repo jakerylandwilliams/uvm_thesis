@@ -17,7 +17,7 @@ done
 
 pdflatex $FILENAME_BASE-main;
 
-if [ $STYLE -eq "JA" ]; then
+if [ $STYLE == "JA" ]; then
   for auxfile in $FILENAME_BASE.chapter*-JA.aux
   do
       bibtex `basename $auxfile .aux`
