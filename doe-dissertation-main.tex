@@ -1,5 +1,5 @@
 %% -*- LaTeX -*-
-\documentclass{report}
+\documentclass[12pt]{report}
 
 \usepackage{thesis}
 
@@ -13,38 +13,52 @@
 \usepackage{amssymb}
 \usepackage[titletoc,toc,title]{appendix}
 \usepackage{titlesec}
-
+\usepackage{listings,color}
 \usepackage{cite}
 \usepackage{tabularx}
+\usepackage[makeroom]{cancel}
+%% \usepackage{todonotes} %% really ugly
+\newcommand{\todo}[1]{\noindent\textcolor{red}{{$\Box$ #1}}} %% credit dodds
+\usepackage{titletoc}
 
+\allowdisplaybreaks
 \widowpenalty=1000000
 \clubpenalty=1000000
 
-% for splitting this main file into sane parts
-% via Peter Dodds
+%% for splitting this main file into sane parts
+%% via Peter Dodds
 \usepackage{currfile}
 \input{\currfilebase.settings}
-
 \input{\filenamebase.title}
 \input{\filenamebase.committee}
 
 \begin{document}
+
+%% \renewcommand{\thesection}{\thepart.\textbf{section}}
+%% \titlecontents{section}[0]{\vspace{4px}}{\bf}{}{}
+%% \titlecontents{section}[0]{\vspace{5.5px}\bf}{}{}{}
+\titlecontents{section}
+              [3.8em]
+              {}
+              {\contentslabel{2.3em}}
+              {\hspace*{-2.3em}}
+              {\titlerule*[1pc]{.}\contentspage}
+
 \maketitle
 \makeacceptance
 
 \input{\filenamebase.abs}
 
-\begin{citationspage}
-\input{\filenamebase.citations}
-\end{citationspage}
+%% for a journal-style dissertation only
+%% \input{\filenamebase.citations}
 
-\begin{dedication} %% Optional
+%% Optional
+%% dedication page
 \input{\filenamebase.dedication}
-\end{dedication}
 
-\begin{acknowledgements}  %% Optional
+%% Optional
+%% acknowledgement page
 \input{\filenamebase.acknowledgements}
-\end{acknowledgements}
 
 \tableofcontents
 \listoffigures
@@ -52,6 +66,16 @@
 
 \mainmatter
 \sloppy
+
+%% \renewcommand{\thesection}{art.\textbf{section}}
+%% put a .section  mashed on...
+%% \titlecontents{section}[3.5em]{\contentslabel{2.3em}}{}{}{}
+\titlecontents{section}[3.5em]{\vspace{2px}}{}{}{\titlerule*[1pc]{.}\contentspage}
+\titlecontents{subsection}[5em]{}{}{}{}
+
+%% for formatting the sections in the main body with the the titlesec package
+%% i don't think that this has any effect on the ToC
+%% \titleformat{\section}[hang]{}{\thesection}{1em}{10em}[]
 
 %for journal format dissertation each chapter needs its own reference section, and want references to be included in global bibliography
 %this is accomplished using include commands
