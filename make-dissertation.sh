@@ -2,11 +2,11 @@
 
 FILENAME_BASE="doe-dissertation"
 
-# set STYLE to JA for a journal article style thesis
-#      (and set the \input's to \include's in the main)
+## set STYLE to "JA" for a journal article style thesis
+##      (and set the \input's to \include's in the main)
 STYLE="standard"
 
-# first test the body versus our style scripts
+## first test the body versus our style scripts
 for FILE in $FILENAME_BASE.chapter*-$STYLE.tex
 do
   echo "checking $FILE"
@@ -32,6 +32,12 @@ fi
 bibtex $FILENAME_BASE-main;
 pdflatex $FILENAME_BASE-main;
 pdflatex $FILENAME_BASE-main;
+## again for good measure
 pdflatex $FILENAME_BASE-main;
 
+echo " "
+echo " "
+echo "There are $(($(grep todo *.tex | wc -l | awk '{print $1;}')-2)) to-dos!!"
 
+\rm *.{toc,aux,log,lot,lof,blg}
+## leaving the .bbl for making arxiv version

@@ -9,6 +9,24 @@ Running ./make-dissertation.sh makes either format, specified by the variable ST
 I've also included a few files for catching common writing errors, as detailed in http://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/ and brought to our attention by Chris Danforth.
 These run by default in make-dissertation.sh and their usage is otherwise documented in bin.
 
+On making an arxiv version: there are three scripts of Peter's that I've hacked upto make work on this repo.
+This has only been tested with Master's thesis options in place.
+As I've left it, it moves all the TeX to one file, and renames and grabs all of the figures, converts them all to pdf (from .ps,.pdf,.png,.jpg).
+Things I changed from Peter were in the make-links, and make-arxiv-submission scripts.
+In make-links.pl, you can play around to convert more figure types to pdf, or I commented out a chunk that converts them all to .eps.
+But those files are bigger (although it will run without pdflatex then).
+For the arXiv the images need to be small, (and they don't say), but I've figured out that less than 400K is okay.
+It might be best to leave photos (with colors) as jpg, but the size penalty for converting the to pdf isn't that bad, and it looks nice having everything be pdf.
+(This would be a quick change in make-links.pl).
+For pdf's that are huge (millions of points plotted), you can bitmap them by converting to a png and back.
+The -density is really important, for how it looks and the file size (those work in opposite directions).
+Here is an example: (you need imagemagick and/or miktex)
+% convert -density 150 image.{pdf,png}
+% cp image{.pdf,-backup.pdf}
+% convert image.{png,pdf}
+
+If you have an ToC formatting questions, ask soon because I'll forget how that works.
+
 Cheers,
 Andy
 
