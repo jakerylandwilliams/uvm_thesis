@@ -1,0 +1,14 @@
+\begin{references}{}
+
+\bibitem[\protect\citeauthoryear{Last and Last}{Last and
+  Last}{2000a}]{proceedings}
+Last, F.~M. and F.~M. Last (2000a).
+\newblock A title.
+\newblock In {\em Proceedings}, pp.\  000--001. Publisher.
+
+\bibitem[\protect\citeauthoryear{Last and Last}{Last and Last}{2000b}]{article}
+Last, F.~M. and F.~M. Last (2000b).
+\newblock A title.
+\newblock {\em Journal Name\/}~{\em Volume\/}(No.), 000--001.
+
+\end{references}

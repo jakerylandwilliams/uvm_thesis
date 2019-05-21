@@ -1,3 +1,82 @@
+From Andy's version, I've updated in two rounds:
+
+1. In 2015, I completed my UVM Ph.D. Dissertation, whereupon I reorganized and 
+entered a lot of new hyperlinks to and from the TOC
+and ensured compatibility with the `tikz` package
+that I often used at the time.
+Overall, these updates were oriented towards
+making the repo in line with the Journal Format Thesis guidelines,
+unlike Andy's, which was set up better for standard format.
+However, I believe I was also to reasonably-well consolidate
+Standard vs. Journal format chapter styles so that
+the template will function for both, 
+without having to specify any special filenames
+or extensions indicating what _type_ of chapter you're writing.
+This said, there is still a bit of juggling required
+to manage the differnet bibliography styles,
+as is documented inline in the updated template comments.
+Note: some Journal Format actions are taken at the command level,
+particularly in `makedoc.sh`, whereupon the `STYLE="JA"`
+simply needs to be modified away (to anything else)
+to move back into the standard thesis style.
+
+Additonally, from this point of update there is still one remaining
+issue with errors having to do with the Journal Format bibliographies.
+Apparently `chicago.bst` isn't compatible with `natbib` such that
+the following error is thrown:
+
+- `! Paragraph ended before \citeauthoryear was complete.`
+
+once for each cite in the main bibliography. 
+While this is _very_ annoying,
+it can be ignored by hitting `<return>` 
+until compilation continues. 
+While this is a serious obstruction to speed,
+it _does not_ appear to have a tangible effect on the output document.
+
+2. In 2019, I submitted my Mid-Point Review Dossier 
+documenting my progress towards tenure at Drexel. 
+Naturally, a range of different variables and
+functionalities were required for this update, 
+including the Executive Summary enviornment.
+While likely not of interest for UVM folks,
+these elements are left in the template,
+perhaps for no other purpose than to exhibit
+how this template might be twisted towards other purposes;
+it's a good workhorse! 
+Note, that since this tempalte's recent use
+was not towards the current UVM dissertation guidelines,
+it will likely need to be 
+checked against the current guidelines for compliance.
+
+Additionally, since multiple document types are
+being handled through this template, 
+I've replaced `make-dissertation.sh`
+with a trimmed-back version---the standard usage is now:
+
+- `./makedoc.sh` or `./makedoc.sh q`
+
+(the latter being for quick, non-TOC-updating, etc., compilations.)
+
+Note as well that in order to use the `./fig/` directory
+as a repository of document figures 
+(to be drawn upon from the chapters)
+one must update their their `TEXINPUTS` path vairable
+in a `.bash_profile` of `.bashrc`, etc., file, like:
+
+- `export TEXINPUTS=./:./fig//:$TEXINPUTS
+
+Otherwise, all figures will just have to be in the repo-main directory.
+
+Overall, continued maintemance will be sparse from my end,
+relating mostly to needs for other big-document production.
+I'm happy to field questions, but can't promise efficient support.
+
+Cheers,
+Jake
+
+-------------------------------------------
+
 From Josh's version I've added some functionality through scripts, reorganized, and made the default more thesis-oriented.
 
 TLDR: run "./setup.sh my-dissertation", edit away, compile w "./make-dissertation.sh"

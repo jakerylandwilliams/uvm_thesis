@@ -1,0 +1,27 @@
+%% \titleformat{\chapter}[hang] 
+%%             {\normalfont\huge\bfseries}
+%%             {\chaptertitlename\ \hyperlink{chap-\thechapter}{\thechapter}:}
+%%             {1em}
+%%             {\addtocontents{toc}{\protect\hypertarget{chap-\thechapter}{}}} 
+
+\chapter[Chapter 1]{Chapter 1}
+
+\label{ch:1}
+\begin{quote}
+  \input{chapter1/tex/chapter1.abs}
+\end{quote}
+
+%%% introductory section
+\input{chapter1/tex/chapter1.intro}
+
+%%% second section
+\input{chapter1/tex/chapter1.sec2}
+
+%% note: for Journal Format, the `\bibliography{bibname}` command
+%% must be executed after each chapter, 
+%% prior to the global bibliography's  execution
+%% and set to the bibliographiy style (different from the main one).
+%% For stnadard-format theses, comment out the below lines
+% \bibliographystyle{elsarticle-harv}
+\bibliographystyle{chicago}
+\bibliography{example} 

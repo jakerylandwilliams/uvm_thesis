@@ -1,0 +1,5 @@
+checking for passive voice: template-main-combined.tex
+ 
+checking for todos: template-main-combined.tex
+ 
+There are -2 to-dos!!

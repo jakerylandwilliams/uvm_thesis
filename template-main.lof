@@ -1,0 +1,7 @@
+\gdef \the@ipfilectr {@-1}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Coffee.\relax }}{2}{figure.caption.9}
+\gdef \the@ipfilectr {}
+\addvspace {10\p@ }
+\contentsfinish 
+\contentsline {figure}{\numberline {A.1}{\ignorespaces A boat.\relax }}{5}{figure.caption.13}

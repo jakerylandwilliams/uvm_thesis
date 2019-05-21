@@ -1,35 +1,121 @@
 %% UVM Thesis Style
 %% dvanhorn@cs.uvm.edu
-%% updated February 2013 by Joshua Auerbach
-%% joshua.auerbach@uvm.edu
+%% updated October 2014 by Nicholas Allgaier
+%% nicholas.allgaier@uvm.edu
+%% updated February 2015 by Jake Williams
+%% jake.williams@uvm.edu
+%% updated February 2019 by Jake Williams
+%% jw3477@drexel.edu
 
 \typeout{UVM Thesis Style, Version 0.1}
 \typeout{Copyright (c) 2005 David Van Horn}
 \typeout{Licensed under the Academic Free License version 2.0}
-\typeout{Updated 2013 by Joshua Auerbach}
+\typeout{Updated 2014 by Nicholas Allgaier}
+\typeout{Updated 2015 by Jake Ryland Williams}
+\typeout{Updated 2019 by Jake Ryland Williams}
+
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{subfigure}
+\usepackage[pdftex]{graphicx}
+\usepackage{multirow}
+\usepackage{chapterbib}
+\usepackage{amssymb}
+\usepackage[titletoc,toc,title]{appendix}
+\usepackage{titlesec}
+\usepackage{listings,color}
+%% \usepackage{cite}
+\usepackage{tabularx}
+\usepackage[makeroom]{cancel}
+%% \usepackage{todonotes} %% really ugly
+\newcommand{\todo}[1]{\noindent\textcolor{red}{{$\Box$ #1}}} %% credit dodds
+\usepackage{titletoc}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage[sectionbib]{natbib}
+\setlength{\bibsep}{\baselineskip}
+\usepackage{bibentry}
+%% \usepackage{draftwatermark} %%% uncomment for draft water mark
+
+\nobibliography*
 
 \usepackage{setspace}
-\usepackage{chicago}
+%\usepackage{chicago}
 \usepackage{fancyhdr}
 \usepackage{ifpdf}
+\usepackage{verbatim}
+%\usepackage{times}
+\usepackage{titletoc}
+%\usepackage{appendix}
+\usepackage{etoolbox}
+\usepackage{lmodern}
+\usepackage{framed}
+\usepackage{hyperref}
+\usepackage[font={small}]{caption}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage[titles,subfigure]{tocloft}
+\usepackage{newfloat,caption}
+\captionsetup[examp]{labelfont=bf}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tikz-cd}
+
+% ============================================
+% Set up floating example enviornment
+% ============================================
+\DeclareFloatingEnvironment[fileext=examp,placement={!ht},name=Example]{exampl}
+
+\newenvironment{examp}[1]{
+    \begin{exampl}[t!]
+    \vspace{8pt}
+    \begin{mdframed}[roundcorner=10pt,backgroundcolor=gray!10]
+    \vspace{7pt}    
+}
+{
+    \vspace{5pt}
+    \end{mdframed}
+    \end{exampl}
+}
+
+% ============================================
+% set style of hyperlinks
+% ============================================
+\definecolor{darkred}{rgb}{0.6,0.05,0.05}
+\definecolor{darkgreen}{rgb}{0.05,0.5,0.05}
+\definecolor{darkblue}{rgb}{0.05,0.05,0.8}
+\definecolor{darkgray}{rgb}{0.15,0.15,0.15}
+\definecolor{paper}{rgb}{0.992,0.964,0.866}
+\hypersetup{
+    colorlinks=true,
+    citecolor=darkblue,
+    linkbordercolor=black, 
+    linkcolor=darkred,
+    urlcolor=darkgreen
+}
+
+% ============================================
+% set margins/geometry
+% ============================================
 \ifpdf
 \setlength{\pdfpagewidth}{8.5in}
 \setlength{\pdfpageheight}{11in}
 \else
 \fi
 
-\usepackage{times}
-
 \setlength{\paperwidth}{8.5in}
 \setlength{\paperheight}{11in}
-
-%% \dottedcontents{subsubsection}[10.5em]{}{3.2em}{1pc}
 
 \setlength{\oddsidemargin}{0.5in}
 \setlength{\topmargin}{0in}  
 \setlength{\textwidth}{6in}
 \setlength{\textheight}{8.06in}
 
+% ============================================
+% Type of degree you are receiving
+% ============================================
+\def\dossier{\gdef\@thesistype{A Dossier}
+	\gdef\@citationthesistype{dossier}
+	\gdef\@acceptancethesistype{Dossier}}
 \def\thesis{\gdef\@thesistype{A Thesis}
 	\gdef\@citationthesistype{thesis}
 	\gdef\@acceptancethesistype{Thesis}}
@@ -39,15 +125,79 @@
 \def\masterarts{\gdef\@degreetype{Master of Arts}}
 \def\masterscience{\gdef\@degreetype{Master of Science}}
 \def\doctorphilosophy{\gdef\@degreetype{Doctor of Philosophy}}
+\def\midtenurereview{\gdef\@degreetype{Mid-Tenure Review}}
 
+% ============================================
+% add your Department here
+% ============================================
 \def\cs{\gdef\@spectype{Computer Science}}
 \def\apma{\gdef\@spectype{Applied Mathematics}}
+\def\ma{\gdef\@spectype{Mathematics}}
+\def\matsci{\gdef\@spectype{Mathematical Sciences}}
+\def\infosci{\gdef\@spectype{Information Science}}
 
+% ============================================
+% add your graduation month here
+% ============================================
 \def\octgrad{\gdef\@gradmonth{October}}
 \def\marchgrad{\gdef\@gradmonth{March}}
 \def\maygrad{\gdef\@gradmonth{May}}
 \def\jangrad{\gdef\@gradmonth{January}}
 \def\decgrad{\gdef\@gradmonth{December}}
+\def\febgrad{\gdef\@gradmonth{February}}
+
+% ===========================================
+% Drexel Mid-Point Review Dossier title environment
+% ===========================================
+%% \renewcommand\maketitle{%
+%%   \thispagestyle{empty}
+%%   \null%
+%%   %\vskip 1em
+%%   \begin{center}
+%%     {\Large \sc \@title \par} 
+%%     \vskip 5em 
+%%     \doublespacing
+%%     {\normalsize
+%%     \@thesistype\ Presented\\
+%%     %%\vskip 5em     
+%%     by\\
+%%     \@author\\
+%%     to\\
+%%     the Unit\\
+%%     of\\
+%%     the Academic Organization\\
+%%     \vskip 5em
+%%     \singlespacing
+%%     in partial fullfillment of the requirements\\
+%%     for \@degreetype\\
+%%     of qualification in \@spectype\\
+%%     \vskip 2em    
+%%     \@gradmonth, \number\gradyear\par
+%%     }
+%%   \end{center} \par
+
+  
+%% %\vskip 4.5em
+%% \null
+%% \vfill
+%% \begin{flushright}
+%% Date: \@defensedate  \\
+%% \@acceptancethesistype\ Review Committee: \\
+%% \bigskip
+%% \@chair, Chairperson \\
+%% % \@advisor, Advisor \\
+%% \@readerone, Reader \\
+%% \@readertwo, Reader\\
+%% %\@readertwo  \\
+%% %
+%% The Name and Title of the person at the top of the Unit
+%% \end{flushright}  
+%%   \newpage
+%% }
+
+% ===============================================
+% Title environment for UVM thesis style
+% ===============================================
 
 \renewcommand\maketitle{%
   \thispagestyle{empty}
@@ -78,7 +228,9 @@
   \newpage
 }
 
-%% Commands to define the defense committee.
+% ===============================================
+% Commands to define the defense committee.
+% ===============================================
 \newcommand\advisor[1]{\gdef\@advisor{#1}}
 \newcommand\readerone[1]{\gdef\@readerone{#1}}
 \newcommand\readertwo[1]{\gdef\@readertwo{#1}}
@@ -92,11 +244,65 @@
   \pagestyle{fancy}
   \fancyhf{}
   \lhead{\leftmark}
-  \cfoot{\thepage}
+  \cfoot{\hyperlink{contents}{\thepage}}
   \pagenumbering{arabic}
   \doublespacing
 }
 
+\newcommand\frontmatter{
+  \pagestyle{fancy}
+  \fancyhf{}
+  \cfoot{\hyperlink{contents}{\thepage}}
+  \pagenumbering{roman}
+}
+
+% ===============================================
+% Set up acceptance page environment for Mid-Point Review Dossier.
+% ===============================================
+
+%% \def\makeacceptance{%
+%%     \thispagestyle{empty}
+%%     \singlespacing
+%%   \noindent
+%%   Accepted by the Unit of the Academic Organization
+%%   in partial fulfillment of the requirements for the
+%%   \@degreetype~of qualification in \@spectype.\par
+%%   \vskip 2.5em
+%%   \noindent
+%%   \@acceptancethesistype\ Review Committee:
+
+%%   \begin{center}
+%%     \begin{tabular}{ll}
+%%       \\ \\ \\
+%%       \hspace{3in} &  Advisor\\
+%%       \cline{1-1} \@advisor & \ \\
+%%       \\ \\ \\
+%%       \ & \ \\
+%%       \cline{1-1} \@readerone & \ \\
+%%       \\ \\ \\
+%%       \ & \ \\
+%%       \@ifundefined{@readertwo}
+%%         {}
+%%         {\cline{1-1} \@readertwo & \ \\
+%%          \\ \\ \\}
+%%       \ & Chairperson\\
+%%       \cline{1-1} \@chair & \ \\
+%%       \\ \\ \\
+
+%%       \ & Title, Top Academic Unit \\
+%%       \cline{1-1} Name & \ \\
+%%       \\ \\ \\
+%%       Date: \@defensedate & \ \\
+%%     \end{tabular}
+%%   \end{center}
+%%   \newpage
+%% }
+
+% ===============================================
+% Set up acceptance page environment.
+% ===============================================
+% The acceptance page has been phased out due to electronic only submission.
+% Style kept here in case of a change in that policy.
 \def\makeacceptance{%
   \singlespacing
   \noindent
@@ -135,107 +341,193 @@
   \newpage
 }
 
-\renewenvironment{abstract}{
+% ==========================================
+% Set up Executive Summary Environment
+% ==========================================
+\newenvironment{summary}{
   \thispagestyle{empty}
-  \section*{Abstract}
+  \phantomsection
+  \section*{\hyperlink{sec-\thesection}{Executive Summary}}
+  \addcontentsline{toc}{section}{Executive Summary}
   \singlespacing
 }{
-  \pagenumbering{roman}
   \newpage
 }
 
+% ==========================================
+% Set up abstract Environment
+% ==========================================
+\renewenvironment{abstract}{
+  \thispagestyle{empty}
+  \phantomsection
+  \section*{\hyperlink{sec-\thesection}{Abstract}}
+  %% \addcontentsline{toc}{section}{Abstract}
+  \singlespacing
+}{
+  \newpage
+}
+
+% ==========================================
+% Set up citations page Environment
+% ==========================================
 \newenvironment{citationspage}{
+  \phantomsection
+  \section*{\hyperlink{sec-\thesection}{Citations}}
   \addcontentsline{toc}{section}{Citations}
-  \vskip 6em
-  \begin{center}
-    {\large \sc CITATIONS \par} 
-    \singlespacing
-  \end{center}
 }{
   \newpage
 }
-
+% ==========================================
+% Set up Dedication Environment
+% ==========================================
 \newenvironment{dedication}{
-  \addcontentsline{toc}{chapter}{Dedication}
-  \begin{center}
+  \thispagestyle{plain}  
+  \phantomsection
+  \section*{\hyperlink{sec-\thesection}{Dedicated to}}
+  \addcontentsline{toc}{section}{Dedication}
 }{
-  \end{center}
   \newpage
 }
 
+% ==========================================
+% Set up acknowledgements Environment
+% ==========================================
 \newenvironment{acknowledgements}{
-  \section*{Acknowledgements}
-  \addcontentsline{toc}{chapter}{Acknowledgements}
+  \phantomsection
+  \section*{\hyperlink{sec-\thesection}{Acknowledgements}}
+  \addcontentsline{toc}{section}{Acknowledgements}
   \begin{doublespace}
 }{
- \end{doublespace}
+  \end{doublespace}
  \newpage
 }
 
-\renewcommand\tableofcontents{%
-    \section*{\contentsname
-        \@mkboth{%
-           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
-    \@starttoc{toc}%
-    \newpage
-    }
-
+% ==========================================
+% Set up list of figures Environment
+% ==========================================
+\setlength{\cftbeforefigskip}{10pt}
 \renewcommand\listoffigures{%
-    \section*{\listfigurename
-      \@mkboth{\MakeUppercase\listfigurename}%
-              {\MakeUppercase\listfigurename}}%
-    \@starttoc{lof}%
-    \addcontentsline{toc}{chapter}{\listfigurename}
-    \newpage
-    }
-
-\renewcommand\listoftables{%
-    \section*{\listtablename
-      \@mkboth{%
-          \MakeUppercase\listtablename}{\MakeUppercase\listtablename}}%
-    \@starttoc{lot}%
-    \addcontentsline{toc}{chapter}{\listtablename}
-    \newpage
-    }
-
-%\let\references\thebibliography
-
-\newenvironment{references}[1]{
-  %\addcontentsline{toc}{section}{References}
-  \singlespacing
-  \section{References}\begin{list}
-	   {[\arabic{enumi}]}{\settowidth\labelwidth{#1}
-	     \leftmargin\labelwidth
-	     \advance\leftmargin\labelsep
-	     \advance\leftmargin\bibindent
-	     \itemindent -\bibindent
-	     \listparindent \itemindent
-	     \parsep \z@
-	     \usecounter{enumi}}
-	   \def\newblock{}
-	   \sloppy
-	   \sfcode`\.=1000\relax
-}{
-	\end{list}
+  \phantomsection
+  \addcontentsline{toc}{section}{\listfigurename}
+  \hypersetup{linkcolor=darkred}
+  \section*{\hyperlink{sec-\thesection}{\listfigurename}}
+  \hypersetup{linkcolor=black}
+  \@starttoc{lof}%
+  \newpage
 }
 
-\renewenvironment{thebibliography}[1]{
+% ==========================================
+% Set up list of tables Environment
+% ==========================================
+\setlength{\cftbeforetabskip}{10pt}
+\renewcommand\listoftables{%
+  \phantomsection
+  \addcontentsline{toc}{section}{\listtablename}
+  \hypersetup{linkcolor=darkred}
+  \section*{\hyperlink{sec-\thesection}{\listtablename}}
+  \hypersetup{linkcolor=black}
+  \@starttoc{lot}%
   \newpage
-  \addcontentsline{toc}{section}{\refname}
+  \hypersetup{linkcolor=darkred}
+}
+
+% ==========================================
+% Publications Environment
+% ==========================================
+\newcommand\citationheadingpublished{
+    \vskip 5em 
+    Material from this \@citationthesistype\ has been published in the following form:\\
+    \vskip 2em 
+}  
+
+% ==========================================
+% Set up the table of contents
+% ==========================================
+\setlength{\cftbeforechapskip}{10pt}
+
+\renewcommand\contentsname{Table of Contents}
+\renewcommand\tableofcontents{%
+  \phantomsection
+  %% \addcontentsline{toc}{section}{\contentsname}
+  \hypersetup{linkcolor=darkred}
+  \section*{\hyperlink{sec-\thesection}{\contentsname}}
+  \hypersetup{linkcolor=black}
+  \@starttoc{toc}%
+  \hypersetup{linkcolor=darkred}
+  \newpage
+}
+
+% ==========================================
+% Set up title styles
+% ==========================================
+
+\titleformat{\chapter}[display]
+            {\bf\LARGE\sc}
+            {\chaptertitlename\ \hyperlink{chap-\thechapter}{\thechapter}}
+            {10pt}
+            {\addtocontents{toc}{\protect\hypertarget{chap-\thechapter}{}}\onehalfspacing\bf\huge\sc}
+
+% reduces the space after the chapter headings
+\titlespacing\chapter{0pt}{0pt plus 4pt minus 2pt}{25pt plus 2pt minus 2pt}
+
+% sections
+\titleformat{\section}
+            {\bfseries\LARGE\sc}
+            {\hyperlink{sec-\thesection}{\thesection}}
+            {1em}
+            {\addtocontents{toc}{\protect\hypertarget{sec-\thesection}{}}}
+            
+            % subsections
+\titleformat{\subsection}
+            {\bfseries\Large\sc}
+            {\hyperlink{subsec-\thesubsection}{\thesubsection}}
+            {1em}
+            {\addtocontents{toc}{\protect\hypertarget{subsec-\thesubsection}{}}}
+
+
+% ==========================================
+% Set up individual section references
+% ==========================================
+\newenvironment{references}[1]{
   \singlespacing
-  \section*{\refname\@mkboth
-    {\uppercase{\refname}}{\uppercase{\refname}}}\begin{list}
-	   {[\arabic{enumi}]}{\settowidth\labelwidth{#1}
-	     \leftmargin\labelwidth
-	     \advance\leftmargin\labelsep
-	     \advance\leftmargin\bibindent
-	     \itemindent -\bibindent
-	     \listparindent \itemindent
-	     \parsep \z@
-	     \usecounter{enumi}}
-	   \def\newblock{}
-	   \sloppy
-	   \sfcode`\.=1000\relax
+  \section[References]{References}\begin{list}
+    {[\arabic{enumi}]}{\settowidth\labelwidth{#1}
+      \leftmargin\labelwidth
+      \advance\leftmargin\labelsep
+      \advance\leftmargin\bibindent
+      \itemindent -\bibindent
+      \listparindent \itemindent
+      \parsep \z@
+      \usecounter{enumi}}
+    \def\newblock{}
+    \sloppy
+    \sfcode`\.=1000\relax
+}{
+  \end{list}
+}
+
+% ==========================================
+% Set up journal format global bibliography
+% ==========================================
+
+\renewenvironment{thebibliography}[1]{  
+  \phantomsection
+  \chapter*{\hyperlink{chap-\thechapter}{Bibliography}}
+  \chaptermark{BIBLIOGRAPHY}
+  \addcontentsline{toc}{chapter}{Bibliography}
+  \singlespacing
+  \begin{list}
+    {[\arabic{enumi}]}{\settowidth\labelwidth{#1}
+      \leftmargin\labelwidth
+      \advance\leftmargin\labelsep
+      \advance\leftmargin\bibindent
+      \itemindent -\bibindent
+      \listparindent \itemindent
+      \parsep \z@
+      \usecounter{enumi}}
+    \def\newblock{}
+    \sloppy
+    \sfcode`\.=1000\relax
 }{
   \end{list}
   \newpage
@@ -244,31 +536,3 @@
 \def\@pnumwidth{1.55em}
 \def\@tocrmarg {2.55em}
 \def\@dotsep{4.5}
-
-\setcounter{tocdepth}{2}
-
-\renewcommand\contentsname{Table of Contents}
-
-%% \renewcommand*\l@section[2]{%
-%%   \ifnum \c@tocdepth >\z@
-%%     \addpenalty\@secpenalty
-%%     \addvspace{1.0em \@plus\p@}%
-%%     \setlength\@tempdima{1.5em}%
-%%     \begingroup
-%%       \parindent \z@ \rightskip \@pnumwidth
-%%       \parfillskip -\@pnumwidth
-%%       \leavevmode \bfseries
-%%       \advance\leftskip\@tempdima
-%%       \hskip -\leftskip
-%%       #1\nobreak%
-%% 	\leaders\hbox{$\m@th \mkern \@dotsep%
-%%            mu.\mkern \@dotsep mu$}\hfill%
-%% 	 \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
-%%     \endgroup
-%%   \fi}
-  
-\newcommand\citationheadingpublished{
-    \vskip 5em 
-    Material from this \@citationthesistype\ has been published in the following form:\\
-    \vskip 2em 
-}  

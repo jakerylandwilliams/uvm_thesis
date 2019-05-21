@@ -1,0 +1,138 @@
+%% -*- LaTeX -*-
+\documentclass[11pt]{report}
+
+% ============================================
+% Load the style file (thesis.sty),
+% which contains all package loads and 
+% enviornment defintions---check it out!!
+% ============================================
+\usepackage{thesis}
+
+\allowdisplaybreaks
+\widowpenalty=1000000
+\clubpenalty=1000000
+
+% ============================================
+% Split the main file into readable parts
+% ============================================
+\usepackage{currfile}
+\input{\currfilebase.settings}
+\input{\filenamebase.title}
+\input{\filenamebase.committee}
+
+\begin{document}
+
+\titlecontents{section}
+              [3.8em]
+              {}
+              {\contentslabel{2.3em}}
+              {\hspace*{-2.3em}}
+              {\titlerule*[1pc]{.}\contentspage}
+
+% ============================================
+% Make the title page
+% ============================================
+\maketitle
+
+% ============================================
+% Make the acceptance page (outmoded)
+% ============================================
+\makeacceptance 
+
+% ============================================
+% Switch to front matter (prelim) styling
+% ============================================
+\frontmatter
+
+% ============================================
+% Make the abstract
+% ============================================
+\input{\filenamebase.abs}
+
+% ============================================
+%% citations page for journal-style
+% ============================================
+\input{\filenamebase.citations}
+
+% ============================================
+%% Optional dedication page
+% ============================================
+\input{\filenamebase.dedication}
+
+% ============================================
+% Optional acknowledgement page
+% ============================================∑
+\input{\filenamebase.acknowledgements}
+
+% ============================================
+% Make the TOC, LOF, and LOT
+% ============================================
+%% \hypersetup{linkcolor=black}
+\hypertarget{contents}{}
+\tableofcontents
+\listoffigures
+\listoftables
+%% \hypersetup{linkcolor=darkred}
+
+% ============================================
+% Make the executive summary
+% ============================================
+%% \input{\filenamebase.summary}
+
+% ============================================
+% Switch to main matter (body) styling
+% ============================================
+\mainmatter
+\sloppy
+
+% ============================================
+% Important journal format references info!
+% ============================================
+% for journal format dissertation each chapter needs its own reference section, 
+% and want references to be included in global bibliography
+% this is accomplished using the \include commands but, 
+% for things like the lit review (chapter 1), conclusion or appendix, 
+% should use the \input command so it does not get it's own references section
+
+%% \renewcommand\chaptermark[1]{\hyperlink{chap-\thechapter}{\chaptermark}}
+
+% ============================================
+% Main content chapters here
+% ============================================
+%% Note: for Standard format, use `\input`, 
+%% and for Journal format use `\include`.
+%% Additonally, Journal format chapters
+%% require executing their own bibliographies
+%% as can be seen in the example chapter (below)
+\include{\filenamebase.chapter1}
+
+% ============================================
+% Journal article format
+% ============================================
+%% For Journal format we have to have a separate bibliography
+%% formatted differently from the chapters.
+%% This removes the word ``Chapter'' and number from the header in 
+%% the global Bibliography and unfortunately must stay right here!
+\renewcommand\chaptermark[1]{\markboth{#1}{}}
+\bibliographystyle{elsarticle-harv}
+
+% ============================================
+% Standard format
+% ============================================
+%% \bibliographystyle{chicago}
+
+%% Read in the bibliography
+\bibliography{example}
+
+% ============================================
+% Make the appendices
+% ============================================
+\newpage
+
+\appendix
+\addappheadtotoc
+
+\input{\filenamebase.appendixA}
+
+\end{document}
+
